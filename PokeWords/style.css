@@ -75,12 +75,13 @@ body {
 }
 
 #guess-input {
-    width: 100%;
+    width: calc(100% - 24px); /* Ajuste o width para a largura da caixa menos 24px para a borda */
     padding: 10px;
     border: 2px solid #C1F1C0;
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 16px;
+    box-sizing: border-box; /* Certifique-se de incluir isso para que o padding não adicione à largura total */
 }
 
 #submit-guess {
