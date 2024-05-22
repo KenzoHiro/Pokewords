@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéWords</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <div id="game-container" class="press-start-2p-regular">
+        <h1>PokémonWords</h1>
+        <p>Guess the Pokémon name!</p>
+        <div id="guesses">
+            <!-- Guesses will be displayed here -->
+        </div>
+        <input type="text" id="guess-input" placeholder="Guess the Pokémon" />
+        <button id="submit-guess">Submit</button>
+        <span id="settings-btn" class="material-symbols-outlined">settings</span>
+        <div id="settings-menu" class="hidden">
+            <div id="settings-content">
+                <h2>Settings</h2>
+                <button id="theme-light">Light Theme</button>
+                <button id="theme-dark">Dark Theme</button>
+                <button id="login-btn">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content light-theme">
+            <span class="close-btn">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="menu-modal" class="modal hidden">
+        <div class="modal-content light-theme">
+            <span class="close-btn">&times;</span>
+            <h2>Menu</h2>
+            <form id="menu-form">
+                <label for="username-menu">Username:</label>
+                <input type="text" id="username-menu" name="username-menu">
+                <label for="password-menu">Password:</label>
+                <input type="password" id="password-menu" name="password-menu">
+                <button type="submit">Confirm</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="win-modal" class="modal hidden">
+        <div class="modal-content light-theme">
+            <h2>Congratulations!</h2>
+            <iframe src="https://giphy.com/embed/PV9nVwercTEU72CQ1X" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
+            <p id="win-time"></p>
+            <button id="play-again-btn">Play Again</button>
+        </div>
+    </div>
+
+    <div id="lose-modal" class="modal">
+        <div class="modal-content light-theme">
+            <span class="close-btn">&times;</span>
+            <h2>You Lost!</h2> 
+            <p></p>
+            <iframe src="https://giphy.com/embed/HvitTO6AhBGCY" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+            <button id="try-again-btn">Try Again</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
