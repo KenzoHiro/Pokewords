@@ -16,8 +16,39 @@ const guessesContainer = document.getElementById('guesses');
 let startTime;
 let currentPokemon;
 let pokemonList = [];
-const maxGuesses = 6; // Define o número máximo de adivinhações permitidas
-let guessCount = 0; // Conta o número de adivinhações feitas
+const maxGuesses = 6; 
+let guessCount = 0; 
+let gameOver = false; 
+
+// Verifica se há um tema salvo no localStorage e aplica-o ao carregar a página
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    document.body.className = savedTheme;
+    document.querySelectorAll('.modal-content').forEach(modalContent => {
+        modalContent.classList.add(savedTheme);
+    });
+
+    // Aplica o tema aos botões Play Again e Try Again
+    if (savedTheme === 'dark-theme') {
+        playAgainBtn.classList.add('dark-theme');
+        tryAgainBtn.classList.add('dark-theme');
+    } else {
+        playAgainBtn.classList.remove('dark-theme');
+        tryAgainBtn.classList.remove('dark-theme');
+    }
+
+    // Aplica o tema às modais de vitória e derrota
+    winModal.classList.toggle('dark-theme', savedTheme === 'dark-theme');
+    loseModal.classList.toggle('dark-theme', savedTheme === 'dark-theme');
+
+    // Verifica se a modal de vitória está visível e aplica o tema correto
+    if (winModal.classList.contains('show')) {
+        winModal.querySelector('.modal-content').classList.toggle('dark-theme', savedTheme === 'dark-theme');
+    }
+} else {
+    // Se não houver tema salvo, aplica o tema padrão
+    toggleTheme('light-theme');
+}
 
 // Função para alternar entre os temas claro e escuro
 function toggleTheme(theme) {
@@ -40,39 +71,21 @@ function toggleTheme(theme) {
     }
 }
 
-// Verifica se há um tema salvo no localStorage e aplica-o ao carregar a página
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    document.body.className = savedTheme;
-    document.querySelectorAll('.modal-content').forEach(modalContent => {
-        modalContent.classList.add(savedTheme);
-    });
-
-    // Aplica o tema aos botões Play Again e Try Again
-    if (savedTheme === 'dark-theme') {
-        playAgainBtn.classList.add('dark-theme');
-        tryAgainBtn.classList.add('dark-theme');
-    } else {
-        playAgainBtn.classList.remove('dark-theme');
-        tryAgainBtn.classList.remove('dark-theme');
-    }
-}
-
 // Evento de clique no botão de configurações
 settingsBtn.addEventListener('click', () => {
-    settingsMenu.classList.toggle('show'); // Mostra ou oculta o menu de configurações
+    settingsMenu.classList.toggle('show');
 });
 
 // Evento de clique no botão de tema claro
 themeLightBtn.addEventListener('click', () => {
     toggleTheme('light-theme'); // Alterna para o tema claro
-    settingsMenu.classList.remove('show'); // Fecha o menu de configurações após a seleção
+    settingsMenu.classList.remove('show');
 });
 
 // Evento de clique no botão de tema escuro
 themeDarkBtn.addEventListener('click', () => {
-    toggleTheme('dark-theme'); // Alterna para o tema escuro
-    settingsMenu.classList.remove('show'); // Fecha o menu de configurações após a seleção
+    toggleTheme('dark-theme');
+    settingsMenu.classList.remove('show');
 });
 
 // Evento de clique no botão de login
@@ -91,19 +104,17 @@ loginBtn.addEventListener('click', () => {
 // Eventos de clique nos botões de fechar do modal
 closeModalBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        loginModal.classList.remove('show'); // Fecha o modal de login ao clicar no botão de fechar
-        settingsMenu.classList.remove('show'); // Fecha o modal do menu ao clicar no botão de fechar
-        winModal.classList.remove('show'); // Fecha o modal de vitória ao clicar no botão de fechar
-        loseModal.classList.remove('show'); // Fecha o modal de derrota ao clicar no botão de fechar
+        loginModal.classList.remove('show');
+        settingsMenu.classList.remove('show');
+        winModal.classList.remove('show');
+        loseModal.classList.remove('show');
     });
 });
 
 // Evento de envio do formulário de login
 const loginForm = document.getElementById('login-form');
 loginForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Previne o comportamento padrão de envio do formulário
-    // Aqui você pode adicionar a lógica para processar o login (enviar dados para um servidor, etc.)
-    // Por enquanto, apenas fechamos o modal de login ao clicar no botão de submit
+    e.preventDefault(); // fazer a implementação da ideia de login mais tarde
     loginModal.classList.remove('show'); // Fecha o modal de login após o envio do formulário
 });
 
@@ -111,8 +122,10 @@ loginForm.addEventListener('submit', (e) => {
 function getTimeSpent() {
     const endTime = new Date();
     const timeDiff = endTime - startTime; // tempo em milissegundos
-    const seconds = Math.floor(timeDiff / 1000);
-    return seconds;
+    const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    return `${hours}h ${minutes}m ${seconds}s`;
 }
 
 // Função para mostrar a tela de vitória
@@ -120,23 +133,29 @@ function showWinModal() {
     const timeSpent = getTimeSpent();
     document.getElementById('win-time').innerText = `Time: ${timeSpent} seconds`;
     winModal.classList.add('show');
+    gameOver = true; // Define gameOver como true após ganhar o jogo
 }
 
 // Função para mostrar a tela de derrota
 function showLoseModal() {
+    const timeSpent = getTimeSpent();
+    document.getElementById('lose-time').innerText = timeSpent;
     loseModal.classList.add('show');
+    gameOver = true;
 }
 
 // Evento de clique no botão de jogar novamente
 playAgainBtn.addEventListener('click', () => {
     winModal.classList.remove('show');
     startGame();
+    gameOver = false; // Reinicia o jogo ao clicar em jogar novamente
 });
 
 // Evento de clique no botão de tentar novamente
 tryAgainBtn.addEventListener('click', () => {
     loseModal.classList.remove('show');
     startGame();
+    gameOver = false;
 });
 
 // Função para iniciar o jogo
@@ -144,7 +163,8 @@ function startGame() {
     // Limpa o campo de entrada e as adivinhações anteriores
     guessInput.value = '';
     guessesContainer.innerHTML = '';
-    guessCount = 0; // Reinicia a contagem de adivinhações
+    guessCount = 0;
+    gameOver = false; // Reinicia o estado do jogo
 
     // Escolhe um Pokémon aleatório da lista
     currentPokemon = pokemonList[Math.floor(Math.random() * pokemonList.length)];
@@ -161,10 +181,13 @@ function isValidPokemonName(name) {
 
 // Função para adicionar uma animação de erro
 function showErrorAnimation() {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = "Esse Pokémon não existe";
     document.body.classList.add('error');
     setTimeout(() => {
         document.body.classList.remove('error');
-    }, 100);
+        errorMessage.textContent = "";
+    }, 800);
 }
 
 // Função para exibir as letras adivinhadas com as cores corretas
@@ -194,6 +217,8 @@ function displayGuess(guess) {
 
 // Evento de clique no botão de enviar adivinhação
 submitGuessBtn.addEventListener('click', () => {
+    if (gameOver) return; // Impede que o jogo receba mais inputs após ser acertado ou perdido
+
     const guess = guessInput.value.toLowerCase().trim();
     if (!isValidPokemonName(guess)) {
         showErrorAnimation();
@@ -212,10 +237,23 @@ submitGuessBtn.addEventListener('click', () => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const guessInput = document.getElementById("guess-input");
+    const submitGuess = document.getElementById("submit-guess");
+
+    // Adicionar evento de teclado para o campo de entrada
+    guessInput.addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+            submitGuess.click();
+        }
+    });
+});
+
 // Carregar a lista de nomes de Pokémon da API
 fetch('https://pokeapi.co/api/v2/pokemon?limit=1000')
     .then(response => response.json())
     .then(data => {
         pokemonList = data.results.map(pokemon => pokemon.name.toLowerCase());
-        startGame(); // Inicia o jogo após carregar a lista de Pokémon
+        startGame(); 
     });
+
