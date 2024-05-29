@@ -16,9 +16,9 @@ const guessesContainer = document.getElementById('guesses');
 let startTime;
 let currentPokemon;
 let pokemonList = [];
-const maxGuesses = 6; 
-let guessCount = 0; 
-let gameOver = false; 
+const maxGuesses = 6; // Define o número máximo de adivinhações permitidas
+let guessCount = 0; // Conta o número de adivinhações feitas
+let gameOver = false; // Controla se o jogo já foi ganho
 
 // Verifica se há um tema salvo no localStorage e aplica-o ao carregar a página
 const savedTheme = localStorage.getItem('theme');
@@ -73,19 +73,19 @@ function toggleTheme(theme) {
 
 // Evento de clique no botão de configurações
 settingsBtn.addEventListener('click', () => {
-    settingsMenu.classList.toggle('show');
+    settingsMenu.classList.toggle('show'); // Mostra ou oculta o menu de configurações
 });
 
 // Evento de clique no botão de tema claro
 themeLightBtn.addEventListener('click', () => {
     toggleTheme('light-theme'); // Alterna para o tema claro
-    settingsMenu.classList.remove('show');
+    settingsMenu.classList.remove('show'); // Fecha o menu de configurações após a seleção
 });
 
 // Evento de clique no botão de tema escuro
 themeDarkBtn.addEventListener('click', () => {
-    toggleTheme('dark-theme');
-    settingsMenu.classList.remove('show');
+    toggleTheme('dark-theme'); // Alterna para o tema escuro
+    settingsMenu.classList.remove('show'); // Fecha o menu de configurações após a seleção
 });
 
 // Evento de clique no botão de login
@@ -104,17 +104,19 @@ loginBtn.addEventListener('click', () => {
 // Eventos de clique nos botões de fechar do modal
 closeModalBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        loginModal.classList.remove('show');
-        settingsMenu.classList.remove('show');
-        winModal.classList.remove('show');
-        loseModal.classList.remove('show');
+        loginModal.classList.remove('show'); // Fecha o modal de login ao clicar no botão de fechar
+        settingsMenu.classList.remove('show'); // Fecha o modal do menu ao clicar no botão de fechar
+        winModal.classList.remove('show'); // Fecha o modal de vitória ao clicar no botão de fechar
+        loseModal.classList.remove('show'); // Fecha o modal de derrota ao clicar no botão de fechar
     });
 });
 
 // Evento de envio do formulário de login
 const loginForm = document.getElementById('login-form');
 loginForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // fazer a implementação da ideia de login mais tarde
+    e.preventDefault(); // Previne o comportamento padrão de envio do formulário
+    // Aqui você pode adicionar a lógica para processar o login (enviar dados para um servidor, etc.)
+    // Por enquanto, apenas fechamos o modal de login ao clicar no botão de submit
     loginModal.classList.remove('show'); // Fecha o modal de login após o envio do formulário
 });
 
@@ -128,20 +130,34 @@ function getTimeSpent() {
     return `${hours}h ${minutes}m ${seconds}s`;
 }
 
-// Função para mostrar a tela de vitória
 function showWinModal() {
-    const timeSpent = getTimeSpent();
-    document.getElementById('win-time').innerText = `Time: ${timeSpent} seconds`;
-    winModal.classList.add('show');
-    gameOver = true; // Define gameOver como true após ganhar o jogo
+    const winModal = document.getElementById('win-modal');
+    if (winModal) {
+        const congratulationsTitle = document.getElementById('congratulations-title');
+        if (congratulationsTitle) {
+            congratulationsTitle.innerText = translations[getLanguage()].congratulationsTitle;
+        }
+        const winTime = document.getElementById('win-time');
+        if (winTime) {
+            winTime.innerText = `Time: ${getTimeSpent()}`;
+        }
+        winModal.classList.add('show');
+    }
 }
 
-// Função para mostrar a tela de derrota
 function showLoseModal() {
-    const timeSpent = getTimeSpent();
-    document.getElementById('lose-time').innerText = timeSpent;
-    loseModal.classList.add('show');
-    gameOver = true;
+    const loseModal = document.getElementById('lose-modal');
+    if (loseModal) {
+        const defeatTitle = document.getElementById('defeat-title');
+        if (defeatTitle) {
+            defeatTitle.innerText = translations[getLanguage()].defeatTitle;
+        }
+        const loseTime = document.getElementById('lose-time');
+        if (loseTime) {
+            loseTime.innerText = `Time: ${getTimeSpent()}`;;
+        }
+        loseModal.classList.add('show');
+    }
 }
 
 // Evento de clique no botão de jogar novamente
@@ -155,7 +171,7 @@ playAgainBtn.addEventListener('click', () => {
 tryAgainBtn.addEventListener('click', () => {
     loseModal.classList.remove('show');
     startGame();
-    gameOver = false;
+    gameOver = false; // Reinicia o jogo ao clicar em tentar novamente
 });
 
 // Função para iniciar o jogo
@@ -163,7 +179,7 @@ function startGame() {
     // Limpa o campo de entrada e as adivinhações anteriores
     guessInput.value = '';
     guessesContainer.innerHTML = '';
-    guessCount = 0;
+    guessCount = 0; // Reinicia a contagem de adivinhações
     gameOver = false; // Reinicia o estado do jogo
 
     // Escolhe um Pokémon aleatório da lista
@@ -182,12 +198,13 @@ function isValidPokemonName(name) {
 // Função para adicionar uma animação de erro
 function showErrorAnimation() {
     const errorMessage = document.getElementById('error-message');
-    errorMessage.textContent = "Esse Pokémon não existe";
+    const lang = getLanguage();
+    errorMessage.textContent = errorMessage.dataset.errorMessage || translations[lang].errorMessage;
     document.body.classList.add('error');
     setTimeout(() => {
         document.body.classList.remove('error');
         errorMessage.textContent = "";
-    }, 800);
+    }, 1000); // Tempo aumentado para que a mensagem de erro seja visível por mais tempo
 }
 
 // Função para exibir as letras adivinhadas com as cores corretas
@@ -243,7 +260,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Adicionar evento de teclado para o campo de entrada
     guessInput.addEventListener("keyup", function (event) {
+        // Verificar se a tecla pressionada é Enter
         if (event.key === "Enter") {
+            // Simular clique no botão de envio
             submitGuess.click();
         }
     });
@@ -254,6 +273,105 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=1000')
     .then(response => response.json())
     .then(data => {
         pokemonList = data.results.map(pokemon => pokemon.name.toLowerCase());
-        startGame(); 
+        startGame(); // Inicia o jogo após carregar a lista de Pokémon
     });
 
+// Atualize a função para adicionar um event listener ao dropdown
+document.addEventListener('DOMContentLoaded', () => {
+    const lang = getLanguage();
+    updateLanguage(lang);
+
+    const languageSelect = document.getElementById('language-select');
+    languageSelect.value = lang; // Define o valor inicial do dropdown
+    languageSelect.addEventListener('change', (event) => {
+        setLanguage(event.target.value);
+    });
+});
+//traduções
+const translations = {
+    en: {
+        title: "PokeWords",
+        instruction: "Guess the Pokemon name!",
+        guessPlaceholder: "Guess the Pokemon",
+        submitButton: "Submit",
+        tryAgainButton: "Try Again",
+        playAgainButton: "Play Again",
+        settingsTitle: "Settings",
+        themeLight: "Light Theme",
+        themeDark: "Dark Theme",
+        loginButton: "Login",
+        usernamePlaceholder: "Username",
+        passwordPlaceholder: "Password",
+        loginTitle: "Login",
+        errorMessage: "This Pokemon does not exist",
+        languageLabel: "Select Language:",
+        congratulationsTitle: "Congratulations!",
+        defeatTitle: "Defeat!",
+        loseTimeLabel: "Time:"
+    },
+    pt: {
+        title: "PokeWords",
+        instruction: "Adivinhe o nome do Pokemon!",
+        guessPlaceholder: "Digite seu palpite",
+        submitButton: "Enviar",
+        tryAgainButton: "Tente Novamente",
+        playAgainButton: "Jogar Novamente",
+        settingsTitle: "Configurações",
+        themeLight: "Tema Claro",
+        themeDark: "Tema Escuro",
+        loginButton: "Entrar",
+        usernamePlaceholder: "Usuário",
+        passwordPlaceholder: "Senha",
+        loginTitle: "Entrar",
+        errorMessage: "Este Pokémon não existe",
+        languageLabel: "Selecione o Idioma:",
+        congratulationsTitle: "Parabéns!",
+        defeatTitle: "Derrota!",
+    }
+};
+
+function updateLanguage(lang) {
+    const elementsToTranslate = {
+        title: '#title',
+        instruction: '#instruction',
+        guessPlaceholder: '#guess-input',
+        submitButton: '#submit-guess',
+        tryAgainButton: '#try-again-btn',
+        playAgainButton: '#play-again-btn',
+        settingsTitle: '#settings-title',
+        themeLight: '#theme-light',
+        themeDark: '#theme-dark',
+        loginButton: '#login-btn',
+        usernamePlaceholder: '#username',
+        passwordPlaceholder: '#password',
+        loginTitle: '#login-title',
+        languageLabel: '#language-label',
+        congratulationsTitle: '#congratulations-title',
+        defeatTitle: '#defeat-title',
+    };
+
+    for (const [key, selector] of Object.entries(elementsToTranslate)) {
+        const element = document.querySelector(selector);
+        if (element) {
+            if (element.tagName === 'INPUT') {
+                element.placeholder = translations[lang][key];
+            } else {
+                element.textContent = translations[lang][key];
+            }
+        }
+    }
+    // Atualiza mensagem de erro
+    const errorMessageElement = document.getElementById('error-message');
+    if (errorMessageElement) {
+        errorMessageElement.dataset.errorMessage = translations[lang].errorMessage;
+    }
+}
+
+function setLanguage(lang) {
+    localStorage.setItem('language', lang);
+    updateLanguage(lang);
+}
+
+function getLanguage() {
+    return localStorage.getItem('language') || 'en';
+}
