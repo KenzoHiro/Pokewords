@@ -1,4 +1,3 @@
-/* Estilos gerais */
 body {
     font-family: "Press Start 2P", system-ui;
     display: flex;
@@ -109,7 +108,7 @@ h1 {
 }
 
 #submit-guess:hover {
-    background-color: #8ad48a; /* Cor do botão ao passar o mouse */
+    background-color: #8ad48a;
 }
 
 #settings-menu {
@@ -128,12 +127,29 @@ h1 {
     display: flex;
 }
 
+#language-select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #8ad48a;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#language-select:hover {
+    background-color: #C1F1C0;
+}
+
 #settings-content {
     background-color: #EBF5DC;
     padding: 30px; 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative; /* Adicione position: relative; */
+    position: relative;
 }
 
 #settings-content h2 {
@@ -210,7 +226,7 @@ h1 {
     top: 10px;
     right: 10px;
     cursor: pointer;
-    color: #fff;
+    color: #bf1919;
     font-size: 24px; 
 }
 
@@ -229,7 +245,7 @@ h1 {
 }
 
 .dark-theme .guess span {
-    border: 2px solid #666; /* Espessura do bordo aumentada */
+    border: 2px solid #666;
 }
 
 .dark-theme .correct { background-color: #005900; }
