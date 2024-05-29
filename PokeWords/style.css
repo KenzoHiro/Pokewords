@@ -1,3 +1,4 @@
+/* Estilos gerais */
 body {
     font-family: "Press Start 2P", system-ui;
     display: flex;
@@ -7,6 +8,7 @@ body {
     margin: 0;
     background-color: #F5F2DC;
     color: #000;
+    font-size: 18px; 
 }
 
 .light-theme {
@@ -25,81 +27,89 @@ body {
     font-style: normal;
 }
 
+h1 {
+    font-size: 48px; 
+    margin-bottom: 20px; 
+    text-align: center;
+}
+
 .material-symbols-outlined {
     font-family: "Material Symbols Outlined", sans-serif;
     cursor: pointer;
+    font-size: 36px; 
 }
 
 #game-container {
     text-align: center;
-    max-width: 400px;
+    max-width: 600px; 
     margin: auto;
-    padding: 20px;
+    padding: 30px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
 #guesses {
-    margin-bottom: 20px;
+    margin-bottom: 30px; 
 }
 
 .guess {
     display: flex;
     justify-content: center;
-    margin-bottom: 5px;
+    margin-bottom: 10px; 
 }
 
 .guess span {
     display: inline-block;
-    width: 30px;
-    height: 30px;
-    margin: 2px;
-    line-height: 30px;
+    width: 40px; 
+    height: 40px; 
+    margin: 4px; 
+    line-height: 40px;
     text-align: center;
-    border: 1px solid #000;
+    border: 2px solid #000;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px; 
     border-radius: 5px;
 }
 
-.correct {
-    background-color: #C1F1C0;
-}
-
-.present {
-    background-color: #FFFF91;
-}
-
-.absent {
-    background-color: #F4D8DA;
-}
+.correct { background-color: #9de19c; }
+.present { background-color: #f4f473; }
+.absent { background-color: #dbadb0; }
 
 #guess-input {
-    width: calc(100% - 24px); /* Ajuste o width para a largura da caixa menos 24px para a borda */
-    padding: 10px;
-    border: 2px solid #C1F1C0;
+    width: calc(100% - 28px);
+    padding: 15px; 
+    border: 3px solid #C1F1C0;
     border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    box-sizing: border-box; /* Certifique-se de incluir isso para que o padding não adicione à largura total */
+    margin-bottom: 20px; 
+    font-size: 20px; 
+    box-sizing: border-box;
 }
 
 #submit-guess {
-    padding: 10px 20px;
-    background-color: #C1F1C0;
+    padding: 15px 25px; 
+    background-color: #4bdb48;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 20px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Press Start 2P", system-ui;
+    color: #000;
+}
+
+#settings-btn {
+    position: absolute;
+    bottom: 20px; 
+    right: 20px; 
+    padding: 15px; 
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 #submit-guess:hover {
-    background-color: #A9E1A9;
-}
-
-#settings-btn {
-    margin-top: 20px;
+    background-color: #8ad48a; /* Cor do botão ao passar o mouse */
 }
 
 #settings-menu {
@@ -120,77 +130,143 @@ body {
 
 #settings-content {
     background-color: #EBF5DC;
-    padding: 20px;
+    padding: 30px; 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Adicione position: relative; */
 }
 
 #settings-content h2 {
     margin-bottom: 20px;
+    font-size: 24px; 
 }
 
 #theme-light, #theme-dark, #login-btn {
     display: block;
     width: 100%;
-    padding: 10px 20px;
-    margin-bottom: 10px;
+    padding: 15px 25px; 
+    margin-bottom: 15px; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    background-color: #8ad48a;
+    font-size: 20px; 
 }
 
 #theme-light:hover, #theme-dark:hover, #login-btn:hover {
     background-color: #C1F1C0;
 }
 
-#login-btn {
-    background-color: #FFFF91;
+#login-modal .modal-content {
+    width: 400px; 
+    padding: 30px; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+#login-modal .modal-content input {
+    width: calc(100% - 20px);
+    padding: 15px; 
+    margin: 15px 0; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 18px; 
+}
+
+#login-modal .modal-content button[type="submit"] {
+    width: 100%;
+    background-color: #005900;
+    border: none;
+    padding: 15px; 
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: "Press Start 2P", system-ui;
+    color: #fff;
+    transition: background-color 0.3s;
+    font-size: 18px; 
+}
+
+#login-modal .modal-content button[type="submit"]:hover {
+    background-color: #00802b;
+}
+
+#login-modal .modal-content.dark-theme {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+#login-modal .modal-content.light-theme {
+    background-color: #EBF5DC;
     color: #000;
 }
 
-/* Estilo para o tema escuro */
+#login-modal .modal-content .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #333;
+    font-size: 24px; 
+}
+
+#login-modal .modal-content .close-btn:hover {
+    color: #555;
+}
+
 .dark-theme {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.dark-theme #game-container {
     background-color: #333;
     color: #fff;
 }
 
-#guess-input {
-    border-color: #FFFF91; /* Cor da borda do input no tema escuro */
+.dark-theme .guess span {
+    border: 2px solid #666; /* Espessura do bordo aumentada */
 }
 
-#submit-guess {
-    background-color: #FFFF91; /* Cor do botão no tema escuro */
-    color: #000; /* Cor do texto no botão no tema escuro */
+.dark-theme .correct { background-color: #005900; }
+.dark-theme .present { background-color: #cccc00; }
+.dark-theme .absent { background-color: #8c0000; }
+
+.dark-theme #submit-guess {
+    background-color: #005900;
+    color: #fff;
 }
 
-#theme-light, #theme-dark, #login-btn {
-    background-color: #FFFF91; /* Cor dos botões no tema escuro */
-    color: #000; /* Cor do texto nos botões no tema escuro */
+.dark-theme #theme-light, .dark-theme #theme-dark, .dark-theme #login-btn {
+    background-color: #005900;
+    color: #fff;
 }
 
-#theme-light:hover, #theme-dark:hover, #login-btn:hover {
-    background-color: #C1F1C0; /* Cor dos botões ao passar o mouse no tema escuro */
+.dark-theme #theme-light:hover, .dark-theme #theme-dark:hover, .dark-theme #login-btn:hover {
+    background-color: #00802b;
 }
 
-#settings-content {
-    background-color: #333; /* Cor do fundo do menu de configurações no tema escuro */
+.dark-theme #settings-content {
+    background-color: #1a1a1a;
 }
 
-#settings-content h2 {
-    color: #FFFF91; /* Cor do texto do cabeçalho do menu de configurações no tema escuro */
+.dark-theme #settings-content h2 {
+    color: #fff;
 }
 
-#settings-content button {
-    background-color: #FFFF91; /* Cor dos botões do menu de configurações no tema escuro */
-    color: #000; /* Cor do texto dos botões do menu de configurações no tema escuro */
+.dark-theme #settings-content button {
+    background-color: #005900;
+    color: #fff;
 }
 
-#settings-content button:hover {
-    background-color: #C1F1C0; /* Cor dos botões ao passar o mouse no menu de configurações no tema escuro */
+.dark-theme #settings-content button:hover {
+    background-color: #00802b;
 }
 
-/* Estilos para o modal de login */
 .modal {
     position: fixed;
     top: 0;
@@ -208,7 +284,7 @@ body {
 }
 
 .modal-content {
-    padding: 20px;
+    padding: 30px; 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -229,291 +305,47 @@ body {
     top: 10px;
     right: 10px;
     cursor: pointer;
+    font-size: 24px; 
 }
 
-/* Estilos para os formulários de login e menu */
-#login-form, #menu-form {
-    margin-top: 20px;
-}
-
-#login-form label, #menu-form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-#login-form input, #menu-form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-#login-form button, #menu-form button {
-    padding: 10px 20px;
-    background-color: #C1F1C0;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#login-form button:hover, #menu-form button:hover {
-    background-color: #A9E1A9;
-}
-
-/* Estilos para o modal de vitória */
-#win-modal {
-    display: none;
-}
-
-#win-modal.show {
-    display: flex;
-}
-
-#win-modal .modal-content {
-    background-color: #EBF5DC;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-#win-modal .modal-content.dark-theme {
-    background-color: #333;
-    color: #FFF;
-}
-
-#win-modal .modal-content.light-theme {
-    background-color: #EBF5DC;
-    color: #000;
-}
-
-#win-modal .modal-content .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-/* Fonte Press Start 2P */
-.press-start-2p-regular {
-    font-family: "Press Start 2P", system-ui;
-    font-weight: 400;
-    font-style: normal;
-}
-
-/* Estilo para o botão Play Again */
+#try-again-btn,
 #play-again-btn {
     font-family: "Press Start 2P", system-ui;
     background-color: #C1F1C0;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 25px; 
     margin-top: 20px;
     cursor: pointer;
     border-radius: 5px;
     color: #000;
     transition: background-color 0.3s;
+    font-size: 20px; 
 }
 
+#try-again-btn:hover,
 #play-again-btn:hover {
     background-color: #A9E2A0;
 }
 
+#try-again-btn.dark-theme,
 #play-again-btn.dark-theme {
-    background-color: #444;
+    background-color: #005900;
     color: #FFF;
 }
 
+#try-again-btn.dark-theme:hover,
 #play-again-btn.dark-theme:hover {
     background-color: #555;
 }
 
-/* Estilos para o modal de vitória */
-#win-modal {
-    display: none;
-    justify-content: center;
-    align-items: center;
+#github-mark {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 32px; 
+    right: 60px; 
+    width: 30px; 
+    height: auto;
 }
 
-#win-modal.show {
-    display: flex;
-}
-
-#win-modal .modal-content {
-    background-color: #EBF5DC;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    position: relative;
-}
-
-#win-modal .modal-content.dark-theme {
-    background-color: #333;
-    color: #FFF;
-}
-
-#win-modal .modal-content.light-theme {
-    background-color: #EBF5DC;
-    color: #000;
-}
-
-#win-modal .modal-content .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-/* Estilos para o modal de login */
-#login-modal .modal-content {
-    width: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#login-modal .modal-content input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-#login-modal .modal-content input[type="submit"] {
-    width: 100%;
-    background-color: #C1F1C0;
-    border: none;
-    padding: 10px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-family: "Press Start 2P", system-ui;
-    color: #000;
-    transition: background-color 0.3s;
-}
-
-#login-modal .modal-content input[type="submit"].dark-theme {
-    background-color: #444;
-    color: #FFF;
-}
-
-#login-modal .modal-content input[type="submit"]:hover {
-    background-color: #A9E2A0;
-}
-
-#login-modal .modal-content input[type="submit"].dark-theme:hover {
-    background-color: #555;
-}
-
-#login-modal .modal-content.dark-theme {
-    background-color: #333;
-    color: #FFF;
-}
-
-#login-modal .modal-content.light-theme {
-    background-color: #EBF5DC;
-    color: #000;
-}
-
-/* Estilo para os modais de configuração e login */
-.modal {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal.show {
-    display: flex;
-}
-
-.modal .modal-content {
-    background-color: #EBF5DC;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    position: relative;
-}
-
-.modal .modal-content.dark-theme {
-    background-color: #333;
-    color: #FFF;
-}
-
-.modal .modal-content.light-theme {
-    background-color: #EBF5DC;
-    color: #000;
-}
-
-.modal .modal-content .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-/* Estilos para o modal de estatísticas */
-#stats-modal .modal-content {
-    width: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-#stats-modal .modal-content.dark-theme {
-    background-color: #333;
-    color: #FFF;
-}
-
-#stats-modal .modal-content.light-theme {
-    background-color: #EBF5DC;
-    color: #000;
-}
-
-#stats-modal .modal-content button {
-    font-family: "Press Start 2P", system-ui;
-    background-color: #C1F1C0;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    color: #000;
-    transition: background-color 0.3s;
-}
-
-#stats-modal .modal-content button.dark-theme {
-    background-color: #444;
-    color: #FFF;
-}
-
-#stats-modal .modal-content button:hover {
-    background-color: #A9E2A0;
-}
-
-#stats-modal .modal-content button.dark-theme:hover {
-    background-color: #555;
-}
-
-/* Adiciona a animação de piscar vermelho */
 @keyframes redshake {
     0% { transform: translateX(-3px); }
     25% { transform: translateX(3px); }
@@ -526,71 +358,14 @@ body {
     animation: redshake 0.4s ease-in-out;
 }
 
-
-/* Estilos para o modal de derrota */
-#lose-modal {
+/* Mensagem de erro */
+.error-message {
     display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    color: red;
+    font-size: 18px;
+    margin-top: 10px; 
 }
 
-#lose-modal.show {
-    display: flex;
-}
-
-#lose-modal .modal-content {
-    background-color: #EBF5DC;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    position: relative;
-}
-
-#lose-modal .modal-content.dark-theme {
-    background-color: #333;
-    color: #FFF;
-}
-
-#lose-modal .modal-content.light-theme {
-    background-color: #EBF5DC;
-    color: #000;
-}
-
-#lose-modal .modal-content .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-#try-again-btn {
-    font-family: "Press Start 2P", system-ui;
-    background-color: #C1F1C0;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    color: #000;
-    transition: background-color 0.3s;
-}
-
-#try-again-btn.dark-theme {
-    background-color: #444;
-    color: #FFF;
-}
-
-#try-again-btn:hover {
-    background-color: #A9E2A0;
-}
-
-#try-again-btn.dark-theme:hover {
-    background-color: #555;
+.error .error-message {
+    display: block;
 }
