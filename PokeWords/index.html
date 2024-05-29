@@ -15,10 +15,10 @@
 
 <body class="light-theme">
     <div id="game-container" class="press-start-2p-regular">
-        <h1>PokeWords</h1>
-        <p>Guess the Pokémon name!</p>
+        <h1 id="title">PokeWords</h1>
+        <p id="instruction">Guess the Pokémon name!</p>
         <div id="guesses">
-            <!-- Menu de adivinhações -->
+            <!-- Menu de adivinhações e configuração -->
         </div>
         <input type="text" id="guess-input" placeholder="Guess the Pokemon" />
         <button id="submit-guess">Submit</button>
@@ -30,12 +30,16 @@
         <div id="error-message" class="error-message"></div>
         <div id="settings-menu" class="modal">
             <div id="settings-content" class="modal-content">
-                <span class="close-btn">&times;</span>
-                <h2>Settings</h2>
-                <span class="close-btn">&times;</span>
+                <span id="close-settings" class="close-btn">&times;</span>
+                <h2 id="settings-title">Settings</h2>
                 <button id="theme-light">Light Theme</button>
                 <button id="theme-dark">Dark Theme</button>
                 <button id="login-btn">Login</button>
+                <label for="language-select" id="language-label">Select Language:</label>
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="pt">Português</option>
+                </select>
             </div>
         </div>
     </div>
@@ -43,38 +47,40 @@
     <div id="login-modal" class="modal hidden">
         <div class="modal-content light-theme">
             <span class="close-btn">&times;</span>
-            <h2>Login</h2>
+            <h2 id="login-title">Login</h2>
             <form id="login-form">
-                <label for="username">Username:</label>
+                <label for="username" id="username-label">Username:</label>
                 <input type="text" id="username" name="username">
-                <label for="password">Password:</label>
+                <label for="password" id="password-label">Password:</label>
                 <input type="password" id="password" name="password">
                 <button type="submit">Login</button>
             </form>
         </div>
     </div>
-            <!-- tela de vitoria -->
+            <!-- Tela de vitória -->
     <div id="win-modal" class="modal hidden">
         <div class="modal-content light-theme">
             <span class="close-btn">&times;</span>
-            <h2>Congratulations!</h2>
+            <h2 id="congratulations-title">Congratulations!</h2>
             <iframe src="https://giphy.com/embed/PV9nVwercTEU72CQ1X" width="480" height="270" frameborder="0"
                 class="giphy-embed" allowfullscreen></iframe>
             <p id="win-time"></p>
             <button id="play-again-btn">Play Again</button>
         </div>
     </div>
-            <!-- tela de derrota -->
+            <!-- Tela de derrota -->
     <div id="lose-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>Defeat!</h2>
+            <h2 id="defeat-title">Defeat!</h2>
             <iframe src="https://giphy.com/embed/HvitTO6AhBGCY" width="480" height="270" frameBorder="0"
                 class="giphy-embed" allowFullScreen></iframe>
-            <p>Time: <span id="lose-time"></span> seconds</p>
+            <p id="lose-time"></p>
             <button id="try-again-btn">Try Again</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>
