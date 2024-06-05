@@ -7,7 +7,7 @@ body {
     margin: 0;
     background-color: #F5F2DC;
     color: #000;
-    font-size: 18px; 
+    font-size: 18px;
 }
 
 .light-theme {
@@ -27,84 +27,91 @@ body {
 }
 
 h1 {
-    font-size: 48px; 
-    margin-bottom: 20px; 
+    font-size: 48px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .material-symbols-outlined {
     font-family: "Material Symbols Outlined", sans-serif;
     cursor: pointer;
-    font-size: 36px; 
+    font-size: 36px;
 }
 
 #game-container {
     text-align: center;
-    max-width: 600px; 
+    max-width: 600px;
     margin: auto;
-    padding: 30px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    background-color: #f2efe9;
 }
 
 #guesses {
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
 }
 
 .guess {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 .guess span {
     display: inline-block;
-    width: 40px; 
-    height: 40px; 
-    margin: 4px; 
+    width: 40px;
+    height: 40px;
+    margin: 4px;
     line-height: 40px;
     text-align: center;
     border: 2px solid #000;
     font-weight: bold;
-    font-size: 20px; 
+    font-size: 20px;
     border-radius: 5px;
 }
 
-.correct { background-color: #9de19c; }
-.present { background-color: #f4f473; }
-.absent { background-color: #dbadb0; }
+.correct {
+    background-color: #9de19c;
+}
+
+.present {
+    background-color: #f4f473;
+}
+
+.absent {
+    background-color: #dbadb0;
+}
 
 #guess-input {
     width: calc(100% - 28px);
-    padding: 15px; 
+    padding: 15px;
     border: 3px solid #C1F1C0;
     border-radius: 5px;
-    margin-bottom: 20px; 
-    font-size: 20px; 
+    margin-bottom: 20px;
+    font-size: 20px;
     box-sizing: border-box;
 }
 
 #submit-guess {
-    padding: 15px 25px; 
+    padding: 15px 25px;
     background-color: #4bdb48;
     border: none;
     border-radius: 5px;
-    font-size: 20px; 
+    font-size: 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
     font-family: "Press Start 2P", system-ui;
     color: #000;
 }
 
 #settings-btn {
     position: absolute;
-    bottom: 20px; 
-    right: 20px; 
-    padding: 15px; 
+    bottom: 0px;
+    right: 0px;
+    padding: 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 #submit-guess:hover {
@@ -137,7 +144,6 @@ h1 {
     color: #000;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 #language-select:hover {
@@ -146,7 +152,7 @@ h1 {
 
 #settings-content {
     background-color: #EBF5DC;
-    padding: 30px; 
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -154,29 +160,33 @@ h1 {
 
 #settings-content h2 {
     margin-bottom: 20px;
-    font-size: 24px; 
+    font-size: 24px;
 }
 
-#theme-light, #theme-dark, #login-btn {
+#theme-light,
+#theme-dark,
+#login-btn {
     display: block;
     width: 100%;
-    padding: 15px 25px; 
-    margin-bottom: 15px; 
+    padding: 15px;
+    margin-bottom: 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
     background-color: #8ad48a;
-    font-size: 20px; 
+    font-family: "Press Start 2P", system-ui;
+    font-size: 20px;
 }
 
-#theme-light:hover, #theme-dark:hover, #login-btn:hover {
+#theme-light:hover,
+#theme-dark:hover,
+#login-btn:hover {
     background-color: #C1F1C0;
 }
 
 #login-modal .modal-content {
-    width: 400px; 
-    padding: 30px; 
+    width: 400px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -185,26 +195,25 @@ h1 {
 
 #login-modal .modal-content input {
     width: calc(100% - 20px);
-    padding: 15px; 
-    margin: 15px 0; 
+    padding: 15px;
+    margin: 15px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    font-size: 18px; 
+    font-size: 18px;
 }
 
 #login-modal .modal-content button[type="submit"] {
     width: 100%;
     background-color: #005900;
     border: none;
-    padding: 15px; 
+    padding: 15px;
     margin-top: 20px;
     cursor: pointer;
     border-radius: 5px;
     font-family: "Press Start 2P", system-ui;
     color: #fff;
-    transition: background-color 0.3s;
-    font-size: 18px; 
+    font-size: 18px;
 }
 
 #login-modal .modal-content button[type="submit"]:hover {
@@ -227,7 +236,7 @@ h1 {
     right: 10px;
     cursor: pointer;
     color: #bf1919;
-    font-size: 24px; 
+    font-size: 24px;
 }
 
 #login-modal .modal-content .close-btn:hover {
@@ -248,21 +257,33 @@ h1 {
     border: 2px solid #666;
 }
 
-.dark-theme .correct { background-color: #005900; }
-.dark-theme .present { background-color: #cccc00; }
-.dark-theme .absent { background-color: #8c0000; }
+.dark-theme .correct {
+    background-color: #005900;
+}
+
+.dark-theme .present {
+    background-color: #cccc00;
+}
+
+.dark-theme .absent {
+    background-color: #8c0000;
+}
 
 .dark-theme #submit-guess {
     background-color: #005900;
     color: #fff;
 }
 
-.dark-theme #theme-light, .dark-theme #theme-dark, .dark-theme #login-btn {
+.dark-theme #theme-light,
+.dark-theme #theme-dark,
+.dark-theme #login-btn {
     background-color: #005900;
     color: #fff;
 }
 
-.dark-theme #theme-light:hover, .dark-theme #theme-dark:hover, .dark-theme #login-btn:hover {
+.dark-theme #theme-light:hover,
+.dark-theme #theme-dark:hover,
+.dark-theme #login-btn:hover {
     background-color: #00802b;
 }
 
@@ -300,7 +321,7 @@ h1 {
 }
 
 .modal-content {
-    padding: 30px; 
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -321,7 +342,7 @@ h1 {
     top: 10px;
     right: 10px;
     cursor: pointer;
-    font-size: 24px; 
+    font-size: 24px;
 }
 
 #try-again-btn,
@@ -329,13 +350,12 @@ h1 {
     font-family: "Press Start 2P", system-ui;
     background-color: #C1F1C0;
     border: none;
-    padding: 15px 25px; 
+    padding: 15px 25px;
     margin-top: 20px;
     cursor: pointer;
     border-radius: 5px;
     color: #000;
-    transition: background-color 0.3s;
-    font-size: 20px; 
+    font-size: 20px;
 }
 
 #try-again-btn:hover,
@@ -356,32 +376,104 @@ h1 {
 
 #github-mark {
     position: fixed;
-    bottom: 32px; 
-    right: 60px; 
-    width: 30px; 
+    bottom: 13px;
+    right: 40px;
+    width: 30px;
     height: auto;
 }
 
 @keyframes redshake {
-    0% { transform: translateX(-3px); }
-    25% { transform: translateX(3px); }
-    50% { transform: translateX(-3px); }
-    75% { transform: translateX(3px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(-3px);
+    }
+
+    25% {
+        transform: translateX(3px);
+    }
+
+    50% {
+        transform: translateX(-3px);
+    }
+
+    75% {
+        transform: translateX(3px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .error {
     animation: redshake 0.4s ease-in-out;
 }
 
-/* Mensagem de erro */
 .error-message {
     display: none;
     color: red;
     font-size: 18px;
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
 .error .error-message {
     display: block;
+}
+
+#autocomplete-container {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#autocomplete-container.dark-theme {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #666;
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #ddd;
+}
+
+#autocomplete-container.dark-theme .suggestion-item:hover {
+    background-color: #555;
+}
+
+.hidden {
+    display: none;
+}
+
+#correct-pokemon {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.dark-theme #correct-pokemon {
+    color: #fff;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    padding: 2px;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+    font-size: 5px;
+    color: #333;
+}
+
+#footer.dark-theme {
+    background-color: #333;
+    color: #fff;
+    border-top: 1px solid #666;
 }
