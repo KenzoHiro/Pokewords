@@ -11,7 +11,7 @@ body {
 }
 
 .light-theme {
-    background-color: #F5F2DC;
+    background-color: #FCFFE0;
     color: #000;
 }
 
@@ -45,7 +45,7 @@ h1 {
     padding: 30px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
-    background-color: #f2efe9;
+    background-color: #FFF3C7;
 }
 
 #guesses {
@@ -106,7 +106,7 @@ h1 {
 
 #settings-btn {
     position: absolute;
-    bottom: 0px;
+    bottom: 10px;
     right: 0px;
     padding: 15px;
     border: none;
@@ -262,7 +262,7 @@ h1 {
 }
 
 .dark-theme .present {
-    background-color: #cccc00;
+    background-color: #FDDE55;
 }
 
 .dark-theme .absent {
@@ -376,7 +376,7 @@ h1 {
 
 #github-mark {
     position: fixed;
-    bottom: 13px;
+    bottom: 23px;
     right: 40px;
     width: 30px;
     height: auto;
@@ -465,10 +465,10 @@ h1 {
     bottom: 0;
     width: 100%;
     text-align: right;
-    padding: 2px;
+    padding: 5px;
     background-color: #f1f1f1;
     border-top: 1px solid #ccc;
-    font-size: 5px;
+    font-size: 10px;
     color: #333;
 }
 
